@@ -7,9 +7,6 @@ from urls import *
 from locators import Locators
 
 
-import random
-import time #ПЕРЕД СДАЧЕЙ УДАЛИТЬ
-
 class TestConstrutor:
     def test_go_to_the_toppings_section(self, driver, wait):
         
@@ -26,6 +23,3 @@ class TestConstrutor:
         
         # проверяем видимость 
         assert element.is_displayed(), "Элемент не отображается"
-        time.sleep(1) #ПЕРЕД СДАЧЕЙ УДАЛИТЬ
-
-        #pytest tests/test_go_to_the_toppings_section.py -v #ПЕРЕД СДАЧЕЙ УДАЛИТЬ

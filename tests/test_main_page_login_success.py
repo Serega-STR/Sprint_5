@@ -7,8 +7,6 @@ from urls import *
 from locators import Locators
 from data import Credentials
 
-import random
-import time #ПЕРЕД СДАЧЕЙ УДАЛИТЬ
 
 class TestLogin:
     def test_main_page_login_success(self, driver, wait):
@@ -40,6 +38,4 @@ class TestLogin:
 
         assert driver.find_element(*Locators.PLACE_AN_ORDER_BUTTON).text == 'Оформить заказ'
 
-        time.sleep(1) #ПЕРЕД СДАЧЕЙ УДАЛИТЬ
-
-        #pytest tests/test_main_page_login_success.py -v #ПЕРЕД СДАЧЕЙ УДАЛИТЬ
+        #pytest tests/test_main_page_login_success.py -v

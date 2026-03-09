@@ -7,8 +7,6 @@ from urls import *
 from locators import Locators
 from data import Credentials
 
-import random
-import time #ПЕРЕД СДАЧЕЙ УДАЛИТЬ
 
 class TestLogin:
     def test_login_via_the_button_in_the_registration_form_success(self, driver, wait):
@@ -51,7 +49,3 @@ class TestLogin:
         # вместо кнопки "Войти в аккаунт" отображается кнопка "Оформить заказ"
 
         assert driver.find_element(*Locators.PLACE_AN_ORDER_BUTTON).text == 'Оформить заказ'
-
-        time.sleep(1) #ПЕРЕД СДАЧЕЙ УДАЛИТЬ
-
-        #pytest tests/test_login_via_the_button_in_the_registration_form_success.py -v #ПЕРЕД СДАЧЕЙ УДАЛИТЬ

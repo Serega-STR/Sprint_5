@@ -7,9 +7,13 @@ from urls import *
 from locators import Locators 
 
 import random
-import time #ПЕРЕД СДАЧЕЙ УДАЛИТЬ
 
 class TestRegistration:
+
+    """
+            Тест: после регистрации пользователь может войти с теми же кредами
+    """
+
     @staticmethod
     def create_password():
         password = f'{random.randint(100_000,999_999)}'
@@ -21,10 +25,6 @@ class TestRegistration:
         return email
 
     def test_succesful_registration_can_log_in(self, driver, wait):
-
-        """
-            Тест: после регистрации пользователь может войти с теми же кредами
-        """     
 
         #выпонить вход в личный кабинет
         driver.find_element(*Locators.HREF_ACCOUNT).click()
@@ -70,10 +70,7 @@ class TestRegistration:
 
         #сравниваем ожидаемую и текущую страницу после авторизации
         
-        #print(f' Страница после авторизации: {driver.current_url}')  #ПЕРЕД СДАЧЕЙ УДАЛИТЬ
         assert driver.current_url == main_site 
-
-        time.sleep(1) #ПЕРЕД СДАЧЕЙ УДАЛИТЬ
 
        
         #pytest tests/test_successful_registration.py -v

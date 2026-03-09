@@ -7,9 +7,6 @@ from urls import *
 from locators import Locators
 from data import Credentials
 
-import random
-import time #ПЕРЕД СДАЧЕЙ УДАЛИТЬ
-
 class TestLogin:
     def test_firefox_main_page_login_success(self, driver_ff, wait_ff):
 
@@ -41,7 +38,3 @@ class TestLogin:
         # вместо кнопки "Войти в аккаунт" отображается кнопка "Оформить заказ"
 
         assert driver_ff.find_element(*Locators.PLACE_AN_ORDER_BUTTON).text == 'Оформить заказ'
-
-        time.sleep(1) #ПЕРЕД СДАЧЕЙ УДАЛИТЬ
-
-        #pytest tests/test_firefox_main_page_login_success.py -v #ПЕРЕД СДАЧЕЙ УДАЛИТЬ

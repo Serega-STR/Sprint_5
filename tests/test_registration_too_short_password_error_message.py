@@ -7,7 +7,6 @@ from urls import *
 from locators import Locators 
 
 import random
-import time #ПЕРЕД СДАЧЕЙ УДАЛИТЬ
 
 class TestRegistration:
     def test_registration_too_short_password_error_message(self, driver, wait):
@@ -51,6 +50,5 @@ class TestRegistration:
         
         # проверяем, что текст элемента соответствует ожидаемому
         assert element.text == 'Некорректный пароль'
-        time.sleep(1) #ПЕРЕД СДАЧЕЙ УДАЛИТЬ
 
         #pytest tests/test_registration_too_short_password_error_message.py -v

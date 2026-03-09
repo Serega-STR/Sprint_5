@@ -7,8 +7,6 @@ from urls import *
 from locators import Locators
 from data import Credentials
 
-import time #ПЕРЕД СДАЧЕЙ УДАЛИТЬ
-
 class TestLogout:
     def test_personal_account_logout(self, driver_pers_acc_page, wait_pap):
         
@@ -29,8 +27,6 @@ class TestLogout:
         # ждем загрузки страницы личного профиля
         wait_pap.until(EC.element_to_be_clickable(Locators.LOG_OUT_BUTTON))
 
-        time.sleep(1) #ПЕРЕД СДАЧЕЙ УДАЛИТЬ
-
         # жмем на кнопку "выход" 
         driver_pers_acc_page.find_element(*Locators.LOG_OUT_BUTTON).click()
 
@@ -41,8 +37,4 @@ class TestLogout:
         # сравниваем ожидаемую и текущую страницу после выхода
         assert driver_pers_acc_page.current_url == pers_acc_page
 
-        # вместо кнопки "Войти в аккаунт" отображается кнопка "Оформить заказ"
-
-        time.sleep(1) #ПЕРЕД СДАЧЕЙ УДАЛИТЬ
-
-        #pytest tests/test_personal_account_logout.py -v #ПЕРЕД СДАЧЕЙ УДАЛИТЬ
+        #pytest tests/test_personal_account_logout.py -v
