@@ -1,0 +1,14 @@
+# Кэши Python
+__pycache__/
+.pytest_cache/
+test/__pycache__/
+test/.pytest_cache/
+
+# Файлы IDE
+.idea/
+
+# Виртуальное окружение Python
+.venv/
+
+# Сам файл .gitignore не игнорируем!
+!.gitignore
