@@ -7,6 +7,7 @@ from urls import *
 from locators import Locators
 from data import Credentials
 
+
 class TestLogout:
     def test_personal_account_logout(self, driver_pers_acc_page, wait_pap):
         
@@ -36,5 +37,3 @@ class TestLogout:
 
         # сравниваем ожидаемую и текущую страницу после выхода
         assert driver_pers_acc_page.current_url == pers_acc_page
-
-        #pytest tests/test_personal_account_logout.py -v

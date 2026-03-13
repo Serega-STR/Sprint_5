@@ -51,25 +51,4 @@ def wait_pap(driver_pers_acc_page):
     # задаем время ожидания драйвера браузера - до 3 сек
     return WebDriverWait(driver_pers_acc_page, 3)
 
-# ФИКСТУРЫ ДЛЯ БРАУЗЕРА FIREFOX
 
-@pytest.fixture(scope="function")
-def driver_ff():
-    
-    # создаем драйвер для браузера (Firefox)
-    driver = webdriver.Firefox()
-
-    # пробуем открыть сайт с помощью драйвера
-    
-    try:
-        # Открываем сайт
-        driver.get(main_site)
-        yield driver
-    finally:
-        # Гарантированно закрываем драйвер даже при ошибке
-        driver.quit()
-
-@pytest.fixture(scope="function")
-def wait_ff(driver_ff):
-    # задаем время ожидания драйвера браузера - до 5 сек
-    return WebDriverWait(driver_ff, 5)

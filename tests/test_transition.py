@@ -1,0 +1,51 @@
+import pytest
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
+from urls import *
+from locators import Locators 
+
+
+class TestTransition:
+    def test_main_page_to_personal_account(self, driver, wait):
+
+        """
+            Тест: переход с главной страницы по клику в ЛК
+        """     
+
+        #выпонить вход в личный кабинет
+        driver.find_element(*Locators.HREF_ACCOUNT).click()
+
+        #ждем загрузки страницы ЛК  
+        wait.until(EC.element_to_be_clickable(Locators.HREF_REGISTER))
+
+        #сравниваем ожидаемую и текущую страницу после авторизации
+        
+        assert driver.current_url == pers_acc_page
+
+    def test_personal_account_to_constructor(self, driver_pers_acc_page, wait_pap):
+
+        """
+            Тест: переход из ЛК в конструктор 
+        """
+        
+        # жмем кнопку "конструктор"
+        driver_pers_acc_page.find_element(*Locators.HREF_CONSTRUCTOR).click()
+
+        #сравниваем ожидаемую и текущую страницу после авторизации
+
+        assert driver_pers_acc_page.current_url == main_site
+
+    def test_personal_account_to_logo_to_construstor(self, driver_pers_acc_page, wait_pap):
+
+        """
+            Тест: переход из ЛК в конструктор 
+        """
+        
+        # жмем кнопку "конструктор"
+        driver_pers_acc_page.find_element(*Locators.HREF_LOGO).click()
+
+        #сравниваем ожидаемую и текущую страницу после авторизации
+
+        assert driver_pers_acc_page.current_url == main_site
