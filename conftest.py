@@ -29,26 +29,6 @@ def driver():
     # после выполнения теста закрываем браузер, останавливаем драйвер
     driver.quit()
 
-@pytest.fixture(scope="function")
-def wait(driver):
-    # задаем время ожидания драйвера браузера - до 3 сек
-    return WebDriverWait(driver, 3)
 
-@pytest.fixture(scope="function")
-def driver_pers_acc_page():
-    
-    # создаем драйвер для браузера (Google Chrome)
-    driver = webdriver.Chrome()
-
-    # открываем сайт с помощью драйвера
-    driver.get(pers_acc_page)
-
-    yield driver
-    driver.quit()
-
-@pytest.fixture(scope="function")
-def wait_pap(driver_pers_acc_page):
-    # задаем время ожидания драйвера браузера - до 3 сек
-    return WebDriverWait(driver_pers_acc_page, 3)
 
 

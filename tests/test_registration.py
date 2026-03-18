@@ -5,7 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from urls import *
 from locators import Locators
-from data import Generator
+from data import Generator, Wait
 
 
 class TestRegistration:
@@ -14,7 +14,10 @@ class TestRegistration:
             Тест: после регистрации пользователь может войти с теми же кредами
     """
 
-    def test_succesful_registration_can_log_in(self, driver, wait):
+    def test_succesful_registration_can_log_in(self, driver):
+        
+        # задаем ожидание
+        wait = Wait.wait(driver)
 
         #выпонить вход в личный кабинет
         driver.find_element(*Locators.HREF_ACCOUNT).click()
@@ -63,11 +66,14 @@ class TestRegistration:
         assert driver.current_url == main_site 
 
 
-    def test_registration_too_short_password_error_message(self, driver, wait):
+    def test_registration_too_short_password_error_message(self, driver):
 
         """
             Тест: нельзя зарегистрироваться с паролем меньше 6 символов
         """     
+        
+        # задаем ожидание
+        wait = Wait.wait(driver)
 
         #выпонить вход в личный кабинет
         driver.find_element(*Locators.HREF_ACCOUNT).click()
@@ -101,6 +107,7 @@ class TestRegistration:
 
         # ждем появления сообщения "Некорректный пароль"
         element = wait.until(EC.visibility_of_element_located(Locators.MESSAGE_WRONG_PASSWORD))
+        assert element
         
         # проверяем, что текст элемента соответствует ожидаемому
         assert element.text == 'Некорректный пароль'

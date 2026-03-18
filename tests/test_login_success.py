@@ -5,16 +5,19 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from urls import *
 from locators import Locators
-from data import Credentials
+from data import Credentials, Wait
 
 
 class TestLogin:
-    def test_main_page_login_success(self, driver, wait):
+    def test_main_page_login_success(self, driver):
 
         """
             Тест: вход по кнопке «Войти в аккаунт» на главной странице
         """     
 
+        # задаем ожидание
+        wait = Wait.wait(driver)
+
         # нажать кнопку «Войти в аккаунт» на главной странице
         driver.find_element(*Locators.LOG_IN_BUTTON_MAIN_PAGE).click()
 
@@ -35,12 +38,15 @@ class TestLogin:
         assert driver.current_url == main_site
         
 
-    def test_main_page_personal_account_login_success(self, driver, wait):
+    def test_main_page_personal_account_login_success(self, driver):
         
         """
             Тест: вход в аккаунт через ЛК
         """   
 
+        # задаем ожидание
+        wait = Wait.wait(driver)
+
         # нажать кнопку «Войти в аккаунт» на главной странице
         driver.find_element(*Locators.LOG_IN_BUTTON_MAIN_PAGE).click()
 
@@ -61,11 +67,14 @@ class TestLogin:
         assert driver.current_url == main_site
         
 
-    def test_login_via_the_button_in_the_registration_form_success(self, driver, wait):
+    def test_login_via_the_button_in_the_registration_form_success(self, driver):
 
         """
             Тест: вход в аккаунт через форму регистрации
-        """     
+        """  
+   
+        # задаем ожидание
+        wait = Wait.wait(driver)
 
         # нажать кнопку «Личный кабинет» на главной странице
         driver.find_element(*Locators.HREF_ACCOUNT).click()
@@ -99,11 +108,14 @@ class TestLogin:
         assert driver.current_url == main_site
 
 
-    def test_login_via_the_button_in_the_password_recovery_form_success(self, driver, wait):
+    def test_login_via_the_button_in_the_password_recovery_form_success(self, driver):
 
         """
             Тест: вход в аккаунт через форму восстановления пароля
         """     
+
+        # задаем ожидание
+        wait = Wait.wait(driver)
 
         # нажать кнопку «Войти в аккаунт» на главной странице
         driver.find_element(*Locators.LOG_IN_BUTTON_MAIN_PAGE).click()

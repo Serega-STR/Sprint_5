@@ -7,6 +7,10 @@ class Locators():
     REGISTER_NAME_FIELD = (By.CSS_SELECTOR, '#root > div > main > div > form > fieldset:nth-child(1) > div > div > input') # поля ввода имени  (форма регистрации)
     REGISTER_EMAIL_FIELD = (By.CSS_SELECTOR, '#root > div > main > div > form > fieldset:nth-child(2) > div > div > input') # поля ввода емейл (форма регистрации) 
     REGISTER_PASSWORD_FIELD = (By.CSS_SELECTOR, 'input[type="password"]') # поля ввода пароля (форма регистрации)
+
+    PERS_ACC_EMAIL_FIELD = (By.XPATH, '//*[@name="name"]') # поле ввода EMAIL  (ЛК)
+    PERS_ACC_PASSWORD_FIELD = (By.XPATH, '//*[@type="password"]') # поле ввода пароля  (ЛК)
+
     LOG_IN_BUTTON = (By.XPATH, '//div[@class="Auth_login__3hAey"]/form/button[text()="Войти"]') # кнопка войти в ЛК
     PLACE_AN_ORDER_BUTTON = (By.XPATH, '//button[text()="Оформить заказ"]') # кнопка оформить заказ
     MESSAGE_WRONG_PASSWORD = (By.XPATH, '//p[text()="Некорректный пароль"]') # сообщение о неправильном пароле

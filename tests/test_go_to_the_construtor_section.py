@@ -5,14 +5,21 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from urls import *
 from locators import Locators
+from data import Wait
 
 
 class TestConstrutor:
-    def test_go_to_the_bread_section(self, driver, wait):
+    
+
+    def test_go_to_the_bread_section(self, driver):
         
         """
             Тест: переход к разделу конструктора Булки
-        """  
+        """
+
+        # задаем ожидание браузера
+        wait = Wait.wait(driver)
+
         # Ждём, пока элемент скролл-меню "начинки" станет видимым
         element = driver.find_element(*Locators.SCROLL_TOPPINGS)
         wait.until(EC.visibility_of(element))
@@ -28,11 +35,14 @@ class TestConstrutor:
         # проверяем что поменялся класс элемента
         assert 'current' in class_value
 
-    def test_go_to_the_sauces_section(self, driver, wait):
+    def test_go_to_the_sauces_section(self, driver):
         
         """
             Тест: переход к разделу конструктора Соусы
         """  
+
+        # задаем ожидание браузера
+        wait = Wait.wait(driver)
 
         # Ждём, пока элемент скролл-меню "соусы" станет видимым
         element = driver.find_element(*Locators.SCROLL_SAUCES)
@@ -46,11 +56,14 @@ class TestConstrutor:
         # проверяем что поменялся класс элемента
         assert 'current' in class_value
 
-    def test_go_to_the_toppings_section(self, driver, wait):
+    def test_go_to_the_toppings_section(self, driver):
         
         """
             Тест: переход к разделу конструктора Начинки
         """  
+
+        # задаем ожидание браузера
+        wait = Wait.wait(driver)
 
         # Ждём, пока элемент скролл-меню "начинки" станет видимым
         element = driver.find_element(*Locators.SCROLL_TOPPINGS)

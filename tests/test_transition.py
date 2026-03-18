@@ -4,15 +4,21 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from urls import *
-from locators import Locators 
+from locators import Locators
+from data import Wait
 
 
 class TestTransition:
-    def test_main_page_to_personal_account(self, driver, wait):
+    
+
+    def test_main_page_to_personal_account(self, driver):
 
         """
             Тест: переход с главной страницы по клику в ЛК
         """     
+
+        # задаем ожидание
+        wait = Wait.wait(driver)
 
         #выпонить вход в личный кабинет
         driver.find_element(*Locators.HREF_ACCOUNT).click()
@@ -24,28 +30,46 @@ class TestTransition:
         
         assert driver.current_url == pers_acc_page
 
-    def test_personal_account_to_constructor(self, driver_pers_acc_page, wait_pap):
+    def test_personal_account_to_constructor(self, driver):
 
         """
             Тест: переход из ЛК в конструктор 
         """
         
+        # задаем ожидание
+        wait = Wait.wait(driver)
+
+        # браузер открывает страницу ЛК
+        driver.get(pers_acc_page)
+
+        # ждем загрузки кнопки "конструктор"
+        wait.until(EC.element_to_be_clickable(Locators.HREF_CONSTRUCTOR))
+
         # жмем кнопку "конструктор"
-        driver_pers_acc_page.find_element(*Locators.HREF_CONSTRUCTOR).click()
+        driver.find_element(*Locators.HREF_CONSTRUCTOR).click()
 
         #сравниваем ожидаемую и текущую страницу после авторизации
 
-        assert driver_pers_acc_page.current_url == main_site
+        assert driver.current_url == main_site
 
-    def test_personal_account_to_logo_to_construstor(self, driver_pers_acc_page, wait_pap):
+    def test_personal_account_to_logo_to_construstor(self, driver):
 
         """
-            Тест: переход из ЛК в конструктор 
+            Тест: переход из ЛК в конструктор по логотипу
         """
         
-        # жмем кнопку "конструктор"
-        driver_pers_acc_page.find_element(*Locators.HREF_LOGO).click()
+        # задаем ожидание
+        wait = Wait.wait(driver)
+
+        # браузер открывает страницу ЛК
+        driver.get(pers_acc_page)
+
+        # ждем загрузки логотипа
+        wait.until(EC.element_to_be_clickable(Locators.HREF_LOGO))
+
+        # жмем кнопку логотипа
+        driver.find_element(*Locators.HREF_LOGO).click()
 
         #сравниваем ожидаемую и текущую страницу после авторизации
 
-        assert driver_pers_acc_page.current_url == main_site
+        assert driver.current_url == main_site
